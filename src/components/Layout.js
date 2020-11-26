@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import logo from "../assets/southteams.png";
 
 const TopBar = styled.div`
   height: 60px;
@@ -10,14 +11,10 @@ const TopBar = styled.div`
   padding-left: 15px;
 `;
 
-const Title = styled.h4`
-  color: white;
-`;
-
 const Layout = () => {
   return (
     <TopBar>
-      <Title>SouthTeams Challenge</Title>
+      <img src={logo} height={20} alt="SouthTeams" />
     </TopBar>
   );
 };
