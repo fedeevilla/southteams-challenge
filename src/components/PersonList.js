@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import InputSearch from "./InputSearch";
 import PersonCard from "./PersonCard";
 import * as R from "ramda";
+import { removeAccents } from "../utils/strings";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,12 +31,14 @@ const PersonList = () => {
 
   const handleSearch = useCallback(
     (e) => {
-      const searchedValue = e.target.value.toLowerCase();
+      const searchedValue = removeAccents(e.target.value.toLowerCase());
       setFilteredUsers(
         users.filter(
           (user) =>
-            user.name.first.toLowerCase().includes(searchedValue) ||
-            user.name.last.toLowerCase().includes(searchedValue)
+            removeAccents(user.name.first.toLowerCase()).includes(
+              searchedValue
+            ) ||
+            removeAccents(user.name.last.toLowerCase()).includes(searchedValue)
         )
       );
     },
