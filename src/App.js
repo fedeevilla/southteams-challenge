@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./components/Layout";
-import PersonList from "./components/PersonList";
+import UserList from "./components/UserList";
 import Spinner from "./components/Spinner";
 import { fetchUsers } from "./store/actions/users";
 
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Layout />
-      {isLoading ? <Spinner style={{ marginTop: 20 }} /> : <PersonList />}
+      {isLoading ? <Spinner style={{ marginTop: 20 }} /> : <UserList />}
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import InputSearch from "./InputSearch";
-import PersonCard from "./PersonCard";
+import UserCard from "./UserCard";
 import * as R from "ramda";
 import { removeAccents } from "../utils/strings";
 
@@ -18,9 +18,18 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 24px;
+  padding: 20px;
 `;
 
-const PersonList = () => {
+const Select = styled.select`
+  width: 180px;
+  margin-left: 50px;
+  padding: 10px;
+  border: 1px solid #406eff;
+  border-radius: 5px;
+`;
+
+const UserList = () => {
   const users = useSelector(({ users }) => users.list);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [sortedUsers, setSortedUsers] = useState("asc");
@@ -58,29 +67,22 @@ const PersonList = () => {
     <>
       <Wrapper>
         <InputSearch placeholder="Search by name" onChange={handleSearch} />
-        <select
-          style={{
-            width: 180,
-            marginLeft: 50,
-            padding: 10,
-            border: "1px solid #406eff",
-            borderRadius: 5,
-          }}
+        <Select
           defaultValue={sortedUsers}
           onChange={(e) => setSortedUsers(e.target.value)}
         >
           <option value="asc">Sort by Email Asc</option>
           <option value="desc">Sort by Email Desc</option>
-        </select>
+        </Select>
       </Wrapper>
       <Grid>
         {userList &&
           userList.map((user) => (
-            <PersonCard key={user.login.uuid} user={user} />
+            <UserCard key={user.login.uuid} user={user} />
           ))}
       </Grid>
     </>
   );
 };
 
-export default PersonList;
+export default UserList;

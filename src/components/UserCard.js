@@ -48,6 +48,8 @@ const Item = styled.span`
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
 `;
 
 const EditIcon = styled.img`
@@ -59,7 +61,7 @@ const EditIcon = styled.img`
 
 const Avatar = styled.div`
   position: relative;
-  bottom: 30px;
+  bottom: 35px;
   text-align: center;
 `;
 
@@ -82,7 +84,13 @@ const WrapperButtons = styled.div`
   padding: 10px;
 `;
 
-const PersonCard = ({ user }) => {
+const Image = styled.img`
+  border-radius: 100%;
+  border: 2px solid white;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.3);
+`;
+
+const UserCard = ({ user }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [firstEdit, setFirstEdit] = useState(user.name.first);
@@ -141,16 +149,7 @@ const PersonCard = ({ user }) => {
             <Name>{`${user.name.first} ${user.name.last}`}</Name>
           </Header>
           <Avatar>
-            <img
-              width={90}
-              style={{
-                borderRadius: "100%",
-                border: "2px solid white",
-                boxShadow: "0px 0px 9px 0px rgba(0, 0, 0, 0.3)",
-              }}
-              src={user.picture.thumbnail}
-              alt="Avatar"
-            />
+            <Image width={90} src={user.picture.thumbnail} alt="Avatar" />
           </Avatar>
           <Content>
             <Item>{user.email}</Item>
@@ -163,4 +162,4 @@ const PersonCard = ({ user }) => {
   );
 };
 
-export default PersonCard;
+export default UserCard;
