@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b85ecc50-ccaf-46ba-bc11-c59fb7fb317e/deploy-status)](https://app.netlify.com/sites/southteams-madmobile/deploys)
+
 # Code Test
 
 Using https://stackblitz.com/ or https://codesandbox.io/​create a React application that will load a list of users from this api https://randomuser.me/
