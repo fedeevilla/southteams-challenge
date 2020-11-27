@@ -22,6 +22,10 @@ const Grid = styled.div`
   padding: 20px;
 `;
 
+const NoResults = styled.h4`
+  text-align: center;
+`;
+
 const UserList = () => {
   const users = useSelector(({ users }) => users.list);
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -69,11 +73,15 @@ const UserList = () => {
           <option value="desc">Sort by Email Desc</option>
         </Select>
       </Wrapper>
-      <Grid>
-        {userList.map((user) => (
-          <UserCard key={user.login.uuid} user={user} />
-        ))}
-      </Grid>
+      {userList.length > 0 ? (
+        <Grid>
+          {userList.map((user) => (
+            <UserCard key={user.login.uuid} user={user} />
+          ))}
+        </Grid>
+      ) : (
+        <NoResults>No Results</NoResults>
+      )}
     </>
   );
 };
