@@ -27,7 +27,7 @@ const NoResults = styled.h4`
 `;
 
 const UserList = () => {
-  const users = useSelector(({ users }) => users.list);
+  const users = useSelector(({ users }) => R.propOr([], "list", users));
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [sortedUsers, setSortedUsers] = useState("asc");
 
