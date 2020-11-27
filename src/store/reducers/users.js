@@ -1,3 +1,4 @@
+import * as R from "ramda";
 import {
   FETCH_USERS_RESOLVED,
   FETCH_USERS_STARTED,
@@ -33,19 +34,22 @@ export const users = (state = initialState, { type, payload = {} }) => {
     case UPDATE_USER_RESOLVED:
       return {
         ...state,
-        list: state.list.map((user) =>
-          user.login.uuid !== payload.id
-            ? user
-            : {
-                ...user,
-                name: {
-                  ...user.name,
-                  first: payload.data.firstEdit,
-                  last: payload.data.lastEdit,
+        //Search by user ID and update it.
+        list: R.map(
+          (user) =>
+            user.login.uuid !== payload.id
+              ? user
+              : {
+                  ...user,
+                  name: {
+                    ...user.name,
+                    first: payload.data.first,
+                    last: payload.data.last,
+                  },
+                  email: payload.data.email,
+                  cell: payload.data.cell,
                 },
-                email: payload.data.emailEdit,
-                cell: payload.data.cellEdit,
-              }
+          state.list
         ),
       };
     case UPDATE_USER_REJECTED:

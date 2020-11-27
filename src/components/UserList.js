@@ -5,6 +5,7 @@ import InputSearch from "./InputSearch";
 import UserCard from "./UserCard";
 import * as R from "ramda";
 import { removeAccents } from "../utils/strings";
+import Select from "./Select";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,14 +20,6 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 24px;
   padding: 20px;
-`;
-
-const Select = styled.select`
-  width: 180px;
-  margin-left: 50px;
-  padding: 10px;
-  border: 1px solid #406eff;
-  border-radius: 5px;
 `;
 
 const UserList = () => {
@@ -66,8 +59,9 @@ const UserList = () => {
   return (
     <>
       <Wrapper>
-        <InputSearch placeholder="Search by name" onChange={handleSearch} />
+        <InputSearch placeholder="Search by Name" onChange={handleSearch} />
         <Select
+          style={{ marginLeft: 30 }}
           defaultValue={sortedUsers}
           onChange={(e) => setSortedUsers(e.target.value)}
         >
@@ -76,10 +70,9 @@ const UserList = () => {
         </Select>
       </Wrapper>
       <Grid>
-        {userList &&
-          userList.map((user) => (
-            <UserCard key={user.login.uuid} user={user} />
-          ))}
+        {userList.map((user) => (
+          <UserCard key={user.login.uuid} user={user} />
+        ))}
       </Grid>
     </>
   );

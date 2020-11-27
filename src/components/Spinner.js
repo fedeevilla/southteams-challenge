@@ -3,9 +3,9 @@ import styled from "styled-components/macro";
 
 const CustomSpinner = styled.div`
   margin: auto;
-  border: 16px solid #f3f3f3;
+  border: 4px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #406eff;
+  border-top: 4px solid #406eff;
   width: 40px;
   height: 40px;
   animation: spin 1s linear infinite;

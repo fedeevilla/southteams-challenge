@@ -4,7 +4,6 @@ export const FETCH_USERS_STARTED = "FETCH_USERS_STARTED";
 export const FETCH_USERS_RESOLVED = "FETCH_USERS_RESOLVED";
 export const FETCH_USERS_REJECTED = "FETCH_USERS_REJECTED";
 
-export const UPDATE_USER_STARTED = "UPDATE_USER_STARTED";
 export const UPDATE_USER_RESOLVED = "UPDATE_USER_RESOLVED";
 export const UPDATE_USER_REJECTED = "UPDATE_USER_REJECTED";
 
@@ -13,7 +12,8 @@ export const fetchUsers = () => async (dispatch) => {
     type: FETCH_USERS_STARTED,
   });
   try {
-    const { results } = await api.users.fetchUsers();
+    // Defined 50 users as a limit
+    const { results } = await api.users.fetchUsers(50);
 
     dispatch({
       type: FETCH_USERS_RESOLVED,

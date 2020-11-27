@@ -32,9 +32,9 @@ const api = {
     }
   },
   users: {
-    fetchUsers: async function () {
+    fetchUsers: async function (limit) {
       const { error, data } = await api.request({
-        url: "/?results=50",
+        url: `/?results=${limit}`,
         method: "GET",
       });
 

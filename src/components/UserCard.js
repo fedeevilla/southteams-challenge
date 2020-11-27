@@ -33,6 +33,9 @@ const Content = styled.div`
 `;
 
 const Name = styled.p`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   text-align: center;
   position: relative;
   width: 100%;
@@ -123,12 +126,13 @@ const UserCard = ({ user }) => {
             <Button
               type="primary"
               onClick={() => {
+                //Update user data
                 dispatch(
                   updateUser(user.login.uuid, {
-                    firstEdit,
-                    lastEdit,
-                    emailEdit,
-                    cellEdit,
+                    first: firstEdit,
+                    last: lastEdit,
+                    email: emailEdit,
+                    cell: cellEdit,
                   })
                 );
                 setIsEditing(false);
